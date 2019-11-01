@@ -13,15 +13,11 @@ fn main() {
     // println!("{:?}", args);
 
     let (height, width) = termion::terminal_size().unwrap();
-    const GRID_SIZE : usize = height * width;
+    // let grid_size = 
 
-    let grid : [cell::Cell; GRID_SIZE];
+    let mut grid = Vec::<cell::Cell>::with_capacity((height * width) as usize);
 
-    for i in 0..height {
-        for j in 0..width {
-		    // print!("{}{}", termion::clear::All, termion::cursor::Goto(i, j));
-            print!("o");
-            let grid[i][j] = Cell::new(alive, i, j);
-        }
+    for i in 0..(height * width) as u32 {
+        grid.push(cell::Cell::new(true, i, i));
     }
 }
