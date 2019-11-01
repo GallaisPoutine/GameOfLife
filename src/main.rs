@@ -17,7 +17,9 @@ fn main() {
 
     let mut grid = Vec::<cell::Cell>::with_capacity((height * width) as usize);
 
-    for i in 0..(height * width) as u32 {
-        grid.push(cell::Cell::new(true, i, i));
+    for i in 0..height as u32 {
+        for j in 0..width as u32 {
+            grid.push(cell::Cell::new(true, i, j));
+        }
     }
 }
