@@ -1,2 +1,4 @@
 /target
 **/*.rs.bk
+.gdb_history
+peda-session-game_of_life.txt
