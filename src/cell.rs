@@ -1,22 +1,14 @@
 #[derive(Clone, Copy, Debug)]
 pub struct Cell {
     alive : bool,
-    x : u32,
-    y : u32,
+    future : bool,
 }
 
-// impl Clone for Cell {
-//     pub fn clone (&self) -> Cell {
-//         *self
-//     }
-// }
-
 impl Cell {
-    pub fn new(alive : bool, x : u32, y : u32) -> Cell {
+    pub fn new(alive : bool, future : bool) -> Cell {
         Cell {
             alive,
-            x,
-            y,
+            future
         }
     }
 
@@ -24,17 +16,13 @@ impl Cell {
         self.alive
     }
 
-    // Getter for cell ?
-    pub fn get_x(&self) -> u32 {
-        self.x
-    }
-
-    pub fn get_y(&self) -> u32 {
-        self.y
+    pub fn set_future(&mut self) {
+        self.alive = self.future;
+        self.future = false;
     }
 
     pub fn process(&mut self, neighbours : u16) {
-        self.alive = self.process_neighbours(neighbours);
+        self.future = self.process_neighbours(neighbours);
     }
 
     // Process if alive according to neighbours
